@@ -1,26 +1,29 @@
 <template>
   <div>
     <h2>Dial your number</h2>
+    <div class="numberLine">
+      <p>{{ formattedNumber }}</p>
+    </div>
     <div>
         <div class="firstLine">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
+            <button @click="appendNumber(1)">1</button>
+            <button @click="appendNumber(2)">2</button>
+            <button @click="appendNumber(3)">3</button>
         </div>
         <div class="secondLine">
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
+            <button @click="appendNumber(4)">4</button>
+            <button @click="appendNumber(5)">5</button>
+            <button @click="appendNumber(6)">6</button>
         </div>
         <div class="thirdLine">
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
+            <button @click="appendNumber(7)">7</button>
+            <button @click="appendNumber(8)">8</button>
+            <button @click="appendNumber(9)">9</button>
         </div>
         <div class="fourthLine">
-            <button>*</button>
-            <button>0</button>
-            <button>#</button>
+            <button @click="appendNumber('*')">*</button>
+            <button @click="appendNumber(0)">0</button>
+            <button @click="appendNumber('#')">#</button>
         </div>
         <div class="fifthLine">
           <button>Appeler</button>
@@ -30,10 +33,38 @@
 </template>
 <script>
 export default {
-  
+  data() {
+    return {
+      number: ''
+    }
+  },
+  computed: {
+    formattedNumber() {
+      let formatted = '';
+      for (let i = 0; i < this.number.length; i++) {
+        if (i % 2 === 0 && i !== 0) {
+          formatted += ' ';
+        }
+        formatted += this.number[i];
+      }
+      return formatted;
+    }
+  },
+  methods: {
+    appendNumber(n) {
+      this.number += n;
+    }
+  }
 }
+
 </script>
 <style scoped>
+  .numberLine {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 20px 800px 20px 800px;
+    
+  }
   .firstLine {
     padding-bottom: 10px;
   }
@@ -47,13 +78,15 @@ export default {
     padding-bottom: 10px;
   }
   button {
-    background: #e3e3e3;
+    background: #878787;
     padding: 20px;
-    border-radius: 100px;
+    border-radius: 50%;
     margin-right: 20px;
     margin-bottom: 5px;
+    color: white;
+    border: none;
   }
-  button:hover {
-    background: #ffd1d1;
+  button:active {
+    background: #b8b8b8;
   }
 </style>
