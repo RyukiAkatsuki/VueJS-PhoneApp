@@ -1,10 +1,11 @@
 <template>
   <nav>
     <router-link to="/">Contact</router-link> |
-    <router-link to="/dial">Dial</router-link> |
-    <router-link to="/contactlist">Contact List</router-link>
+    <router-link to="/contactlist">Contact List</router-link> |
+    <router-link to="/dial">Dial</router-link>
   </nav>
   <router-view/>
+
 </template>
 
 <style>
