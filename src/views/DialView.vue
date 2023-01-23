@@ -26,7 +26,7 @@
             <button @click="appendNumber('#')">#</button>
         </div>
         <div class="fifthLine">
-          <button>Appeler</button>
+          <button>Call</button>
         </div>
     </div>
   </div>
