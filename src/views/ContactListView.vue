@@ -11,8 +11,8 @@
         <div>
             <form>
                 <h2>Add Contact here</h2>
-                <input type="text" placeholder="Nom du Contact" v-model="newContact.name"> <br>
-                <input type="text" placeholder="Numéro de téléphone" v-model="newContact.phonenumber"> <br>
+                <input type="text" placeholder="Contact Name" v-model="newContact.name"> <br>
+                <input type="text" placeholder="Phone Number" v-model="newContact.phonenumber"> <br>
                 <button @click="addContact(newContact)">Add contact</button>
             </form>
         </div>
