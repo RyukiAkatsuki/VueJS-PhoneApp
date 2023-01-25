@@ -27,13 +27,12 @@
             <button @click="appendNumber('#')">#</button>
         </div>
         <div class="fifthLine">
-          <button>Call</button>
+          <button @click="addToCallLogAndNavigate()">Call</button>
         </div>
     </div>
   </div>
 </template>
 <script>
-
 export default {
   name: 'App',
   data() {
@@ -54,11 +53,25 @@ export default {
     },
     matchingContact() {
       return this.$store.state.contact.find(contact => contact.phonenumber === this.formattedNumber)
+    },
+    callLog() {
+      return this.$store.state.callLog
     }
   },
   methods: {
     appendNumber(n) {
       this.number += n;
+    },
+    addToCallLogAndNavigate() {
+      let contactName = this.matchingContact ? this.matchingContact.name : 'No matching contact found in your contact list';
+      let callDate = new Date();
+      let callObject = {
+        number: this.formattedNumber,
+        name: contactName,
+        date: callDate
+      }
+      this.$store.dispatch('addToCallLog', callObject)
+      this.$router.push('/')
     }
   }
 }

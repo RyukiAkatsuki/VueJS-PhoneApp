@@ -9,7 +9,7 @@
             <div v-for="contact in contacts" :key="contact.name" class="contact">
                 <h3>{{ contact.name }}</h3>
                 <p>{{ contact.phonenumber }}</p>
-                <button>Call</button>
+                <button @click="addToCallLogAndNavigate(contact.name, contact.phonenumber)">Call</button>
             </div>
         </div>
     </div>
@@ -19,6 +19,18 @@ export default {
     computed: {
         contacts() {
             return this.$store.state.contact
+        }
+    },
+    methods: {
+        addToCallLogAndNavigate(name, phonenumber) {
+            let callDate = new Date();
+            let callObject = {
+                number: phonenumber,
+                name: name,
+                date: callDate
+            }
+            this.$store.dispatch('addToCallLog', callObject)
+            this.$router.push('/')
         }
     }
 }
