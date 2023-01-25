@@ -33,9 +33,10 @@
 </template>
 <script>
 export default {
+  name: 'App',
   data() {
     return {
-      number: ''
+      number: '',
     }
   },
   computed: {
@@ -48,7 +49,7 @@ export default {
         formatted += this.number[i];
       }
       return formatted;
-    }
+    },
   },
   methods: {
     appendNumber(n) {
