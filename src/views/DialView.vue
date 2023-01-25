@@ -3,7 +3,7 @@
     <h2>Dial your number</h2>
     <div class="numberLine">
       <p>{{ formattedNumber }}</p>
-      <p>{{matchingContact ? matchingContact.name : 'No matching contact found'}}</p>
+      <p>{{matchingContact ? matchingContact.name : 'No matching contact found in your contact list'}}</p>
     </div>
     <div>
         <div class="firstLine">
