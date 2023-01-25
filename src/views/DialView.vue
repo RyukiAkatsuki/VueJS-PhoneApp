@@ -3,6 +3,7 @@
     <h2>Dial your number</h2>
     <div class="numberLine">
       <p>{{ formattedNumber }}</p>
+      <p>{{matchingContact ? matchingContact.name : 'No matching contact found'}}</p>
     </div>
     <div>
         <div class="firstLine">
@@ -32,6 +33,7 @@
   </div>
 </template>
 <script>
+
 export default {
   name: 'App',
   data() {
@@ -50,6 +52,9 @@ export default {
       }
       return formatted;
     },
+    matchingContact() {
+      return this.$store.state.contact.find(contact => contact.phonenumber === this.formattedNumber)
+    }
   },
   methods: {
     appendNumber(n) {
